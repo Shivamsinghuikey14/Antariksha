@@ -1,0 +1,18 @@
+{
+  "nav.solarSystem": "Solar System",
+  "nav.deepSky":     "Deep Sky",
+  "nav.live":        "Live",
+  "nav.tools":       "Tools",
+  "nav.bookmarks":   "Bookmarks",
+  "nav.home":        "Home",
+  "lang.label":      "Language",
+  "home.kicker":     "A complete heaven for space lovers",
+  "save.bookmark":   "Save",
+  "save.saved":      "Saved",
+  "tonight.title":   "Tonight",
+  "tonight.sunset":  "Sunset",
+  "tonight.sunrise": "Sunrise",
+  "tonight.dark":    "Astronomical dark",
+  "tonight.inSpace": "In space right now",
+  "tonight.aurora":  "Aurora forecast (Kp)"
+}

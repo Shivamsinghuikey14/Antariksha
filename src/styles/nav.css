@@ -1,0 +1,371 @@
+/* =========================================================================
+   AETHER · nav.css
+   Refined responsive top bar with hover dropdowns (desktop) and a
+   full-screen panel (mobile). Loaded BEFORE pages.css so layout overrides.
+   ========================================================================= */
+
+/* ─────────── TOP BAR (desktop) ─────────── */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(180deg, rgba(8, 10, 16, 0.94), rgba(8, 10, 16, 0.78) 70%, rgba(8, 10, 16, 0));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+.topbar.scrolled {
+  background: rgba(8, 10, 16, 0.92);
+  border-bottom-color: var(--horizon, rgba(255, 255, 255, 0.06));
+}
+
+/* brand */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--moonlight, #efeae0);
+  font-family: var(--font-display, 'Italiana', serif);
+  font-size: 1.4rem;
+  letter-spacing: 0.25em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.brand:hover { color: var(--ember, #ffd28a); }
+.brand-mark {
+  font-size: 1.1rem;
+  color: var(--ember, #ffd28a);
+  transition: transform 0.6s ease;
+}
+.brand:hover .brand-mark { transform: rotate(180deg); }
+.brand-word {
+  display: inline-block;
+}
+
+/* ─────────── DESKTOP NAV ─────────── */
+.nav-desktop {
+  display: flex;
+  justify-content: center;
+}
+.nav-root {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.25rem;
+}
+.nav-item { position: relative; }
+
+.nav-link {
+  background: none;
+  border: none;
+  padding: 0.65rem 1.1rem;
+  color: var(--moonlight, #efeae0);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 0.4rem;
+  height: 1px;
+  background: var(--ember, #ffd28a);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.nav-link:hover, .nav-link.on { color: var(--ember, #ffd28a); }
+.nav-link:hover::after, .nav-link.on::after { transform: scaleX(1); }
+
+.nav-caret {
+  font-size: 0.55rem;
+  opacity: 0.6;
+  transition: transform 0.3s;
+}
+.nav-item:hover .nav-caret,
+.nav-item:focus-within .nav-caret { transform: rotate(180deg); }
+
+/* DROPDOWN PANEL */
+.nav-sub {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 320px;
+  background: rgba(12, 14, 22, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--horizon, rgba(255, 255, 255, 0.08));
+  padding: 0.85rem;
+  display: grid;
+  gap: 0.15rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.3s ease;
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.4);
+}
+.nav-sub::before {
+  content: '';
+  position: absolute;
+  inset: -10px 0 0 0;
+  background: transparent;
+}
+.nav-item:hover .nav-sub,
+.nav-item:focus-within .nav-sub,
+.nav-item.open .nav-sub {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* "Overview" link at top of each dropdown - styled distinctly from sub-items */
+.nav-sub-overview {
+  border-bottom: 1px dashed var(--horizon, rgba(255, 255, 255, 0.08));
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.6rem !important;
+}
+.nav-sub-overview .nav-sub-num { color: var(--gold); }
+.nav-sub-overview .nav-sub-name { color: var(--gold); }
+
+.nav-sub-link {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  grid-template-rows: auto auto;
+  align-items: baseline;
+  gap: 0.05rem 0.85rem;
+  padding: 0.7rem 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 2px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.nav-sub-link:hover {
+  background: rgba(255, 210, 138, 0.12);
+  transform: translateX(4px);
+}
+.nav-sub-link:hover .nav-sub-name { color: var(--gold); }
+  text-decoration: none;
+  color: var(--moonlight);
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.nav-sub-num {
+  grid-row: span 2;
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--ember);
+  text-align: center;
+}
+.nav-sub-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--moonlight);
+  line-height: 1.1;
+}
+.nav-sub-desc {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--starlight, #9a9690);
+  line-height: 1.4;
+}
+
+/* ─────────── RIGHT SIDE (clock + burger) ─────────── */
+.topbar-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--horizon);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--starlight);
+}
+.live-pill .dot {
+  width: 6px; height: 6px;
+  background: #5dffaa;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #5dffaa;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+/* ─────────── MOBILE BURGER ─────────── */
+.nav-burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1px solid var(--horizon);
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+.nav-burger span {
+  display: block;
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  height: 1px;
+  background: var(--moonlight);
+  transition: transform 0.4s, opacity 0.3s, top 0.3s;
+}
+.nav-burger span:nth-child(1) { top: 14px; }
+.nav-burger span:nth-child(2) { top: 21px; }
+.nav-burger span:nth-child(3) { top: 28px; }
+.nav-burger.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* ─────────── MOBILE OVERLAY ─────────── */
+.nav-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: rgba(8, 10, 16, 0.98);
+  backdrop-filter: blur(20px);
+  display: none;
+  overflow-y: auto;
+  padding: 6rem 2rem 3rem;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.nav-mobile.open {
+  display: block;
+  opacity: 1;
+}
+.nm-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2.5rem;
+}
+.nm-group { }
+.nm-group-h {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--horizon);
+}
+.nm-group a {
+  display: block;
+  padding: 0.85rem 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--moonlight);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: color 0.2s, padding-left 0.3s;
+}
+.nm-group a:hover {
+  color: var(--ember);
+  padding-left: 0.5rem;
+}
+
+/* ─────────── RESPONSIVE BREAKPOINT ─────────── */
+@media (max-width: 1100px) {
+  .nav-desktop { display: none; }
+  .nav-burger  { display: block; }
+  .topbar { padding: 0.9rem 1.5rem; gap: 1rem; grid-template-columns: auto 1fr; }
+  .live-pill { display: none; }
+}
+@media (max-width: 500px) {
+  .brand-word { font-size: 1.05rem; letter-spacing: 0.2em; }
+  .topbar { padding: 0.75rem 1.1rem; }
+}
+
+/* prevent body scroll when overlay open */
+body.nav-locked { overflow: hidden; }
+
+/* Visual cue when a dropdown is open via click */
+.nav-item.open > .nav-link {
+  color: var(--gold);
+}
+.nav-item.open > .nav-link .nav-caret {
+  display: inline-block;
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+.nav-caret {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  margin-left: 0.15rem;
+}
+
+/* Split top-level: label navigates, caret toggles dropdown */
+.nav-link-pair {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+.nav-caret-btn {
+  background: transparent;
+  border: none;
+  padding: 0.4rem 0.45rem;
+  color: var(--ink-soft, rgba(239, 234, 224, 0.65));
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 2px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-caret-btn:hover,
+.nav-caret-btn:focus-visible {
+  color: var(--gold);
+  background: rgba(255, 210, 138, 0.08);
+}
+.nav-item.open .nav-caret-btn { color: var(--gold); }
+.nav-item.open .nav-caret-btn .nav-caret { transform: rotate(180deg); }
+
+/* "X overview" first item in dropdown — gold accent + dotted separator below */
+.nav-sub-overview {
+  border-bottom: 1px dashed var(--horizon, rgba(255, 255, 255, 0.08));
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.7rem !important;
+}
+.nav-sub-overview .nav-sub-num,
+.nav-sub-overview .nav-sub-name {
+  color: var(--gold);
+}
+.nav-sub-overview:hover .nav-sub-name {
+  color: var(--gold);
+  filter: brightness(1.2);
+}

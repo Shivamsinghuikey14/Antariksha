@@ -1,0 +1,1486 @@
+/* =========================================================================
+   AETHER · pages.css
+   Page-specific styles for the multipage build. Loaded on every page,
+   after tokens / base / layout / components.
+   ========================================================================= */
+
+/* ─────────── Top-bar active state ─ now lives in nav.css ─────────── */
+
+/* ─────────── Page hero (used on every non-home page) ─────────── */
+.page-hero {
+  position: relative;
+  padding: 12rem 6vw 5rem;
+  min-height: 50vh;
+  display: grid;
+  align-items: end;
+  border-bottom: 1px solid var(--horizon);
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ember-soft) 50%, transparent);
+}
+.page-hero-inner { max-width: 1100px; }
+.page-hero-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 1.5rem;
+}
+.page-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.page-hero-sub {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  font-style: italic;
+  color: var(--moonlight);
+  max-width: 720px;
+  line-height: 1.5;
+}
+
+/* ─────────── HOME: gateway grid ─────────── */
+.gateway {
+  padding: 8rem 6vw;
+  border-bottom: 1px solid var(--horizon);
+}
+.gateway-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem;
+}
+.gateway-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 1.5rem;
+}
+.gateway-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+.gateway-sub {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--moonlight);
+}
+.gateway-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.gw-card {
+  position: relative;
+  padding: 2.5rem 2rem 2rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--horizon);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+  transition: border-color 0.4s, transform 0.5s, background 0.4s;
+  overflow: hidden;
+}
+.gw-card.big { grid-column: span 2; min-height: 260px; }
+@media (max-width: 800px) { .gw-card.big { grid-column: span 1; } }
+.gw-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 30%, rgba(255, 210, 138, 0.06), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.gw-card:hover {
+  border-color: var(--ember-soft);
+  transform: translateY(-3px);
+}
+.gw-card:hover::before { opacity: 1; }
+.gw-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--ember);
+  margin-bottom: 1.25rem;
+}
+.gw-name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  line-height: 1.05;
+}
+.gw-desc {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--moonlight);
+  line-height: 1.55;
+  flex: 1;
+}
+.gw-arrow {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--ember);
+  margin-top: 1.5rem;
+  transition: transform 0.4s;
+}
+.gw-card:hover .gw-arrow { transform: translateX(6px); }
+
+/* ─────────── PLANETS INDEX: worlds grid ─────────── */
+.worlds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.world-card {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.005));
+  border: 1px solid var(--horizon);
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  transition: border-color 0.4s, transform 0.5s, background 0.4s;
+  overflow: hidden;
+}
+.world-card:hover {
+  border-color: var(--ember);
+  transform: translateY(-4px);
+  background: linear-gradient(180deg, rgba(255, 210, 138, 0.03), rgba(255, 255, 255, 0.005));
+}
+.world-visual {
+  height: 200px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.world-orb {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-image: var(--planet-tex);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  box-shadow:
+    inset -25px -10px 60px rgba(0, 0, 0, 0.7),
+    inset 8px 5px 20px rgba(255, 255, 255, 0.08),
+    0 0 50px rgba(255, 210, 138, 0.08);
+  transition: transform 0.8s, box-shadow 0.6s;
+  animation: orb-spin 60s linear infinite;
+}
+@keyframes orb-spin {
+  from { background-position: 0% 50%; }
+  to   { background-position: 200% 50%; }
+}
+.world-card:hover .world-orb {
+  transform: scale(1.1);
+  box-shadow:
+    inset -25px -10px 60px rgba(0, 0, 0, 0.7),
+    inset 8px 5px 20px rgba(255, 255, 255, 0.1),
+    0 0 80px rgba(255, 210, 138, 0.18);
+}
+.world-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 24px;
+  border: 1px solid rgba(240, 214, 140, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotateX(75deg);
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(240, 214, 140, 0.2);
+}
+.world-index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--ember);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.world-name {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.world-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--moonlight);
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+}
+.world-stats {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--starlight);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.world-stats span {
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--horizon);
+}
+.world-enter {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--ember);
+  text-transform: uppercase;
+}
+
+/* ─────────── PLANETS INDEX: extras (Sun, Moon) ─────────── */
+.extra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+@media (max-width: 800px) { .extra-grid { grid-template-columns: 1fr; } }
+.extra-card {
+  padding: 3rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.005));
+  border: 1px solid var(--horizon);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.4s, transform 0.5s;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+}
+.extra-card:hover { border-color: var(--ember); transform: translateY(-3px); }
+.extra-card::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  right: -50px;
+  top: -50px;
+  opacity: 0.4;
+  filter: blur(30px);
+}
+.extra-sun::before {
+  background: radial-gradient(circle, rgba(255, 210, 138, 0.7), transparent 70%);
+}
+.extra-moon::before {
+  background: radial-gradient(circle, rgba(200, 200, 220, 0.5), transparent 70%);
+}
+.extra-name {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+.extra-desc {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--moonlight);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─────────── PLANET DETAIL: full-bleed 3D hero ─────────── */
+.planet-hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 8rem 6vw 4rem;
+  border-bottom: 1px solid var(--horizon);
+}
+.planet-hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.planet-hero-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+.planet-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  pointer-events: none;
+}
+.planet-hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 1.5rem;
+}
+.planet-hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 11rem);
+  font-weight: 400;
+  line-height: 0.95;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+.planet-hero-tag {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: var(--moonlight);
+  margin-bottom: 2rem;
+}
+.planet-hero-actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  pointer-events: auto;
+}
+.planet-action {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--starlight);
+}
+.planet-action.chip {
+  text-decoration: none;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid var(--horizon);
+  color: var(--ember);
+  transition: border-color 0.3s, background 0.3s;
+}
+.planet-action.chip:hover {
+  border-color: var(--ember);
+  background: rgba(255, 210, 138, 0.05);
+}
+
+/* ─────────── PLANET DETAIL: stats grid ─────────── */
+.planet-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  border: 1px solid var(--horizon);
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.ps-cell {
+  padding: 1.75rem;
+  border-right: 1px solid var(--horizon);
+  border-bottom: 1px solid var(--horizon);
+  background: rgba(255, 255, 255, 0.012);
+}
+.ps-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--starlight);
+  margin-bottom: 0.5rem;
+}
+.ps-value {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--moonlight);
+  line-height: 1.2;
+}
+
+/* ─────────── PLANET DETAIL: description & meta ─────────── */
+.planet-description {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.planet-desc-body {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--moonlight);
+  margin-bottom: 1.5rem;
+}
+.planet-meta-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding-top: 2.5rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--horizon);
+}
+.pmr-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--starlight);
+  margin-bottom: 0.5rem;
+}
+.pmr-value {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--moonlight);
+  font-size: 1.05rem;
+}
+
+/* ─────────── PLANET DETAIL: facts list ─────────── */
+.planet-facts {
+  max-width: 900px;
+  margin: 4rem auto 0;
+  padding-top: 3rem;
+  border-top: 1px solid var(--horizon);
+}
+.planet-section-h {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+.fact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.fact-list li {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--horizon);
+  align-items: start;
+}
+.fact-list li:last-child { border-bottom: none; }
+.fact-num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--ember);
+}
+.fact-text {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--moonlight);
+}
+
+/* ─────────── moons & missions ─────────── */
+.moons-list, .mission-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.moon-item, .mission-item {
+  padding: 1.1rem 1.4rem;
+  border: 1px solid var(--horizon);
+  background: rgba(255, 255, 255, 0.012);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--moonlight);
+  font-style: italic;
+}
+
+/* ─────────── planet detail: nav to other planets ─────────── */
+.planet-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.85rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.planet-nav-item {
+  padding: 1.5rem 1.2rem;
+  border: 1px solid var(--horizon);
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  transition: border-color 0.3s, background 0.3s;
+}
+.planet-nav-item:hover {
+  border-color: var(--ember);
+  background: rgba(255, 210, 138, 0.04);
+}
+.pni-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--ember);
+  margin-bottom: 0.5rem;
+}
+.pni-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--moonlight);
+}
+
+/* ─────────── nebula types / six-card grids ─────────── */
+.nebula-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.nt-card {
+  padding: 2rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.005));
+  border: 1px solid var(--horizon);
+  transition: border-color 0.3s, transform 0.4s;
+}
+.nt-card:hover { border-color: var(--ember-soft); transform: translateY(-3px); }
+.nt-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--moonlight);
+  margin-bottom: 1rem;
+}
+.nt-card p {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--starlight);
+  margin: 0;
+}
+.nt-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--ember);
+  text-decoration: none;
+}
+
+/* ─────────── sun hero ─────────── */
+.sun-hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 8rem 6vw 4rem;
+  border-bottom: 1px solid var(--horizon);
+  overflow: hidden;
+}
+.sun-hero::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 180, 80, 0.12), rgba(255, 100, 50, 0.04) 30%, transparent 60%);
+  animation: sun-pulse 8s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes sun-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.05); }
+}
+.sun-hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.sun-hero-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+.sun-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+}
+.cme-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.cme-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--horizon);
+  background: rgba(255, 255, 255, 0.01);
+}
+@media (max-width: 700px) { .cme-row { grid-template-columns: 1fr; } }
+.cme-date {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--ember);
+}
+.cme-detail {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--moonlight);
+}
+
+/* ─────────── meteor shower table ─────────── */
+.shower-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--horizon);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.sh-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.8fr 1.5fr;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--horizon);
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--moonlight);
+  letter-spacing: 0.05em;
+}
+@media (max-width: 700px) {
+  .sh-row { grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem; }
+}
+.sh-row:last-child { border-bottom: none; }
+.sh-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--ember);
+}
+.sh-peak, .sh-rate { color: var(--moonlight); }
+.sh-parent { color: var(--starlight); font-style: italic; font-family: var(--font-serif); }
+
+/* ─────────── multi-agency launches grid ─────────── */
+.launches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.launch-card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  padding: 1.5rem;
+  border: 1px solid var(--horizon);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.005));
+  transition: border-color 0.4s, transform 0.5s;
+}
+.launch-card:hover { border-color: var(--ember-soft); transform: translateY(-2px); }
+.launch-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--horizon);
+}
+.launch-provider {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+.launch-status {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.launch-status.go { color: #5dffaa; border-color: rgba(93, 255, 170, 0.3); }
+.launch-status.tbd { color: var(--starlight); border-color: var(--horizon); }
+.launch-status.success { color: #5dffaa; border-color: rgba(93, 255, 170, 0.3); }
+.launch-status.fail, .launch-status.partial { color: #ff8a8a; border-color: rgba(255, 138, 138, 0.3); }
+.launch-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--moonlight);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.launch-rocket {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--starlight);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.launch-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.lm-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--moonlight);
+}
+.lm-label { color: var(--starlight); letter-spacing: 0.1em; text-transform: uppercase; }
+.launch-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: var(--ember);
+  text-decoration: none;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--horizon);
+}
+.launch-link:hover { color: var(--moonlight); }
+
+/* ─────────── big CTAs ─────────── */
+.big-cta {
+  display: block;
+  text-align: center;
+  padding: 3rem 2rem;
+  border: 1px solid var(--horizon);
+  background: linear-gradient(180deg, rgba(255, 210, 138, 0.04), rgba(255, 255, 255, 0));
+  text-decoration: none;
+  color: var(--ember);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+  transition: border-color 0.3s, background 0.4s;
+}
+.big-cta:hover {
+  border-color: var(--ember);
+  background: linear-gradient(180deg, rgba(255, 210, 138, 0.08), rgba(255, 255, 255, 0));
+}
+
+/* ─────────── footer extras ─────────── */
+.foot-nav {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.foot-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--starlight);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.foot-nav a:hover { color: var(--ember); }
+
+/* ─────────── ISS viewer-corner-name fix (unused on multipage) ─────────── */
+#viewer-corner-name { display: none; }
+
+/* =========================================================================
+   AETHER v2 — additions for: solar-system, moons, stars, exoplanets,
+   universe, simulator, telescopes-v2
+   ========================================================================= */
+
+/* ─────────── 3D ORRERY HERO ─────────── */
+.orrery-hero {
+  position: relative;
+  min-height: 100vh;
+  border-bottom: 1px solid var(--horizon);
+  overflow: hidden;
+}
+.orrery-canvas {
+  position: absolute; inset: 0; z-index: 0;
+}
+.orrery-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+.orrery-ui {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-items: end;
+  min-height: 100vh;
+  padding: 8rem 4vw 3rem;
+  pointer-events: none;
+}
+.orrery-readout {
+  max-width: 720px;
+  pointer-events: auto;
+}
+.orrery-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 1rem;
+}
+.orrery-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+.orrery-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--moonlight);
+  margin-bottom: 1.75rem;
+  max-width: 620px;
+}
+.orrery-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.orrery-btn {
+  padding: 0.55rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--horizon);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--moonlight);
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+}
+.orrery-btn:hover, .orrery-btn.active {
+  border-color: var(--ember);
+  color: var(--ember);
+  background: rgba(255, 210, 138, 0.05);
+}
+.orrery-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--starlight);
+  margin-bottom: 1rem;
+}
+.orrery-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.orrery-legend i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+.orrery-clock {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--moonlight);
+}
+
+/* ─────────── MOONS GRID ─────────── */
+.moons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.moon-card {
+  padding: 1.75rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.005));
+  border: 1px solid var(--horizon);
+  transition: border-color 0.3s, transform 0.4s;
+}
+.moon-card:hover {
+  border-color: var(--ember-soft);
+  transform: translateY(-2px);
+}
+.moon-card-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+.moon-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--moonlight);
+}
+.moon-diameter {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--ember);
+}
+.moon-tag {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--starlight);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.moon-notable {
+  font-family: var(--font-serif);
+  color: var(--moonlight);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+.moon-facts {
+  font-family: var(--font-serif);
+  color: var(--starlight);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+.moon-meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--starlight);
+  border-top: 1px solid var(--horizon);
+  padding-top: 0.8rem;
+}
+.moon-meta strong {
+  color: var(--ember);
+  font-weight: normal;
+}
+.moon-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: var(--ember);
+  text-decoration: none;
+}
+
+/* ─────────── STARS GRID ─────────── */
+.stars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.star-card {
+  padding: 1.8rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.005));
+  border: 1px solid var(--horizon);
+  transition: border-color 0.3s, transform 0.4s;
+}
+.star-card:hover {
+  border-color: var(--ember-soft);
+  transform: translateY(-3px);
+}
+.star-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--horizon);
+}
+.star-constellation {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--ember);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.star-name {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--moonlight);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+.star-also {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--starlight);
+}
+.star-mag {
+  text-align: center;
+  padding-left: 1rem;
+  border-left: 1px solid var(--horizon);
+}
+.star-mag-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--ember);
+  line-height: 1;
+}
+.star-mag-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--starlight);
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+.star-tag {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ember);
+  font-size: 0.95rem;
+  margin-bottom: 0.7rem;
+}
+.star-desc {
+  font-family: var(--font-serif);
+  color: var(--moonlight);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+.star-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.6rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--moonlight);
+}
+.star-stats div { display: flex; flex-direction: column; gap: 0.15rem; }
+.star-stats span {
+  font-size: 0.65rem;
+  color: var(--starlight);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ─────────── EXOPLANETS GRID ─────────── */
+.exo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.exo-card {
+  padding: 1.8rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.005));
+  border: 1px solid var(--horizon);
+  transition: border-color 0.3s, transform 0.4s;
+}
+.exo-card:hover {
+  border-color: var(--ember-soft);
+  transform: translateY(-3px);
+}
+.exo-header {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--horizon);
+}
+.exo-type {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--ember);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.exo-name {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--moonlight);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+.exo-star {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--starlight);
+}
+.exo-tag {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ember);
+  font-size: 0.95rem;
+  margin-bottom: 0.7rem;
+}
+.exo-desc {
+  font-family: var(--font-serif);
+  color: var(--moonlight);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+.exo-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.6rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--moonlight);
+}
+.exo-stats div { display: flex; flex-direction: column; gap: 0.15rem; }
+.exo-stats span {
+  font-size: 0.65rem;
+  color: var(--starlight);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ─────────── SIMULATOR ─────────── */
+.sim-section {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1rem;
+  max-width: 1500px;
+  margin: 3rem auto 0;
+  padding: 0 4vw;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .sim-section { grid-template-columns: 1fr; padding: 0 1.5rem; }
+}
+.sim-stage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: radial-gradient(ellipse at center, rgba(20, 25, 40, 0.5), rgba(8, 10, 16, 0.95));
+  border: 1px solid var(--horizon);
+  overflow: hidden;
+}
+.sim-stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  display: block;
+}
+.sim-hint {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--starlight);
+  background: rgba(8, 10, 16, 0.85);
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--horizon);
+  line-height: 1.5;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+.sim-hint.hidden { opacity: 0; }
+
+.sim-panel {
+  padding: 1.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--horizon);
+  display: grid;
+  gap: 1.25rem;
+  align-self: start;
+}
+.sim-panel-h {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ember);
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--horizon);
+}
+.sim-control-block { display: grid; gap: 0.6rem; }
+.sim-c-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--starlight);
+}
+.sim-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.sim-btn-row.vert { flex-direction: column; }
+.sim-btn {
+  flex: 1 1 auto;
+  padding: 0.6rem 0.7rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--horizon);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--moonlight);
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+  text-align: center;
+}
+.sim-btn.wide { width: 100%; }
+.sim-btn:hover, .sim-btn.active {
+  border-color: var(--ember);
+  color: var(--ember);
+  background: rgba(255, 210, 138, 0.04);
+}
+.sim-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--moonlight);
+  cursor: pointer;
+}
+.sim-stats {
+  border-top: 1px solid var(--horizon);
+  padding-top: 1rem;
+  display: grid;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--moonlight);
+}
+.sim-stats > div {
+  display: flex;
+  justify-content: space-between;
+}
+.sim-stat-l {
+  color: var(--starlight);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ─────────── TELESCOPES v2 ─────────── */
+.tv-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.tv-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 1px solid var(--horizon);
+}
+.tv-frame iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+.tv-label {
+  position: absolute;
+  top: 0.8rem; left: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.35rem 0.65rem;
+  z-index: 2;
+}
+
+.scope-filter {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  flex-wrap: wrap;
+}
+.scope-chip {
+  padding: 0.55rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--horizon);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--moonlight);
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+}
+.scope-chip span { color: var(--starlight); margin-left: 0.4rem; }
+.scope-chip:hover, .scope-chip.active {
+  border-color: var(--ember);
+  color: var(--ember);
+  background: rgba(255, 210, 138, 0.05);
+}
+
+.scope-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.scope-card {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.005));
+  border: 1px solid var(--horizon);
+  transition: border-color 0.3s, transform 0.4s, opacity 0.3s;
+}
+@media (max-width: 900px) {
+  .scope-card { grid-template-columns: 1fr; }
+}
+.scope-card:hover { border-color: var(--ember-soft); transform: translateY(-2px); }
+.scope-card.hidden { display: none; }
+
+.scope-images {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.5rem;
+  min-height: 280px;
+}
+.scope-card:has(.scope-img[data-role="sample"]) .scope-images {
+  grid-template-rows: 1fr 1fr;
+}
+.scope-card:not(:has(.scope-img[data-role="sample"])) .scope-images {
+  grid-template-rows: 1fr;
+}
+.scope-img {
+  position: relative;
+  background: rgba(8, 10, 16, 0.5);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.scope-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.scope-img:hover img { transform: scale(1.05); }
+.scope-img-label {
+  position: absolute;
+  top: 0.5rem; left: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  background: rgba(0, 0, 0, 0.75);
+  padding: 0.25rem 0.5rem;
+  z-index: 2;
+}
+.scope-img .loading {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--starlight);
+}
+
+.scope-body { display: flex; flex-direction: column; }
+.scope-kind {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.5rem;
+}
+.scope-name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--moonlight);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+.scope-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ember);
+  font-size: 1rem;
+  margin-bottom: 0.85rem;
+}
+.scope-desc {
+  font-family: var(--font-serif);
+  color: var(--moonlight);
+  font-size: 1.02rem;
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+.scope-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--moonlight);
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--horizon);
+}
+.scope-stats div { display: flex; flex-direction: column; gap: 0.15rem; }
+.scope-stats span {
+  font-size: 0.62rem;
+  color: var(--starlight);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.scope-link {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--ember);
+  text-decoration: none;
+}
+
+/* ─────────── tiny page hero tweak: respect new tall navbar ─────────── */
+.page-hero { padding-top: 9rem; }
+.hero-content { padding-top: 8rem; }

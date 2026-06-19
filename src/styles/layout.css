@@ -1,0 +1,256 @@
+/* ============================================================
+   Top navigation — see nav.css for the actual styles.
+   Only the keyframes used elsewhere remain here.
+   ============================================================ */
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  height: 100vh;
+  display: grid;
+  overflow: hidden;
+}
+#solar-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+#solar-canvas canvas { display: block; width: 100% !important; height: 100% !important; }
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(4, 4, 12, 0.5) 75%, var(--void) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 9rem 3rem 3rem;
+  pointer-events: none;
+}
+.hero-headline-wrap { text-align: center; align-self: center; }
+.hero-eyebrow {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  opacity: 1;
+  animation: rise 1.4s 0.2s both;
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 14vw, 12rem);
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-shadow: 0 0 80px rgba(106, 217, 255, 0.3), 0 0 120px rgba(180, 139, 255, 0.15);
+  opacity: 1;
+  animation: rise 1.6s 0.4s both;
+}
+.hero-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 2rem auto 0;
+  line-height: 1.5;
+  opacity: 1;
+  animation: rise 1.6s 0.7s both;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-cue {
+  align-self: end;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: rise 1.6s 1s forwards;
+  pointer-events: auto;
+}
+.scroll-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+.scroll-bar {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, var(--gold), transparent);
+  animation: scroll-pulse 2.5s infinite;
+}
+@keyframes scroll-pulse {
+  0%  { transform: scaleY(0.3); transform-origin: top; }
+  50% { transform: scaleY(1);   transform-origin: top; }
+  51% { transform: scaleY(1);   transform-origin: bottom; }
+  100%{ transform: scaleY(0.3); transform-origin: bottom; }
+}
+
+/* ============================================================
+   Section / movement
+   ============================================================ */
+section.movement {
+  position: relative;
+  padding: 9rem 4rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.movement-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 5rem;
+}
+.movement-num {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 8vw, 7rem);
+  color: var(--ink-faint);
+  line-height: 1;
+}
+.movement-num em { color: var(--gold); font-style: normal; }
+.movement-title-block { padding-bottom: 0.5rem; }
+.movement-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  color: var(--ion);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.movement-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.95;
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+.movement-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  margin-top: 1.2rem;
+  max-width: 640px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.observatory-footer {
+  position: relative;
+  padding: 8rem 4rem 4rem;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 6rem;
+  z-index: 2;
+}
+.foot-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.3;
+  color: var(--ink);
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+.foot-cite {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 4rem;
+}
+.foot-mark {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  letter-spacing: 0.5em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.foot-sources {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+}
+.foot-sources span { color: var(--gold); }
+.foot-sub {
+  margin-top: 2rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-dim);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 1100px) {
+  .viewer-layout { grid-template-columns: 1fr !important; gap: 2rem; }
+  .viewer-list {
+    flex-direction: row;
+    overflow-x: auto;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-right: 0;
+    padding-bottom: 1rem;
+  }
+  .viewer-list-item {
+    padding: 1rem;
+    flex: 0 0 auto;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 100px;
+  }
+  .viewer-list-item.active::after { display: none; }
+  .gallery-grid  { grid-template-columns: repeat(3, 1fr); }
+  .mars-grid     { grid-template-columns: repeat(3, 1fr); }
+  .library-grid  { grid-template-columns: repeat(3, 1fr); }
+  .jwst-feature  { grid-template-columns: 1fr; }
+  .mission-feature { grid-template-columns: 1fr; }
+  .earth-layout  { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  section.movement { padding: 5rem 1.5rem; }
+  .hero-content { padding: 7rem 1.5rem 2rem; }
+  .movement-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+  .mars-grid    { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+  .library-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+  .neo-summary  { grid-template-columns: 1fr; }
+  .neo-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  .neo-row.header { display: none; }
+  .tv-meta { grid-template-columns: 1fr; }
+  .observatory-footer { padding: 5rem 1.5rem 3rem; }
+}

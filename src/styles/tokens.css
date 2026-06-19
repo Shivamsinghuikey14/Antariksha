@@ -1,0 +1,42 @@
+/* ============================================================
+   AETHER · Design tokens
+   ============================================================ */
+:root {
+  /* color */
+  --void:       #04040c;
+  --abyss:      #0a0a1c;
+  --deep:       #12122a;
+  --nebula-p:   #2a1a4d;
+  --nebula-b:   #0d2a4d;
+
+  --ink:        #f2efe6;
+  --ink-soft:   #c4c0d4;
+  --ink-dim:    #7a7795;
+  --ink-faint:  #3e3d5a;
+
+  --gold:       #ffd28a;
+  --solar:      #ffb04a;
+  --ion:        #6ad9ff;
+  --cosmic:     #b48bff;
+  --mars:       #ff6a4a;
+  --aurora:     #7dffaf;
+  --rose:       #ff5e8c;
+
+  /* aliases — these names are used by pages-react.css and various pages.
+     Keep them pointing to the canonical tokens above. */
+  --ivory:      var(--ink);
+  --ember:      var(--gold);
+
+  /* typography */
+  --font-display: 'Italiana', 'Cormorant Garamond', serif;
+  --font-serif:   'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'Inter', -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+
+  /* spacing rhythm */
+  --gap-xs: 0.5rem;
+  --gap-sm: 1rem;
+  --gap-md: 2rem;
+  --gap-lg: 4rem;
+  --gap-xl: 8rem;
+}

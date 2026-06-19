@@ -1,0 +1,18 @@
+{
+  "nav.solarSystem": "सौर मंडल",
+  "nav.deepSky":     "गहरा आकाश",
+  "nav.live":        "लाइव",
+  "nav.tools":       "उपकरण",
+  "nav.bookmarks":   "बुकमार्क",
+  "nav.home":        "मुख्य",
+  "lang.label":      "भाषा",
+  "home.kicker":     "अंतरिक्ष प्रेमियों के लिए एक संपूर्ण स्वर्ग",
+  "save.bookmark":   "सहेजें",
+  "save.saved":      "सहेजा गया",
+  "tonight.title":   "आज रात",
+  "tonight.sunset":  "सूर्यास्त",
+  "tonight.sunrise": "सूर्योदय",
+  "tonight.dark":    "खगोलीय अंधकार",
+  "tonight.inSpace": "अभी अंतरिक्ष में",
+  "tonight.aurora":  "ध्रुवीय ज्योति पूर्वानुमान"
+}
