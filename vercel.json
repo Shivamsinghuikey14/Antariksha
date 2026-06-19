@@ -1,15 +1,9 @@
 {
-  "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "builds": [
-    { "src": "api/index.js", "use": "@vercel/node" },
-    { "src": "dist/**", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/index.js" },
-    { "src": "/(.*\\.(?:js|css|svg|png|jpg|jpeg|webp|ico|woff2?|ttf|json))", "dest": "/dist/$1" },
-    { "src": "/(.*)", "dest": "/dist/index.html" }
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/index" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
